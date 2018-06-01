@@ -1,0 +1,19 @@
+
+syntax = "proto3";
+
+service Model {
+    rpc Classify (Image) returns (ClassDistribution) {}
+}
+
+message Image {
+    bytes content = 1;
+}
+
+message ClassDistribution {
+    message ClassScore {
+        string klass = 1;
+        float score = 2;
+    }
+    repeated ClassScore distribution = 1;
+}
+
